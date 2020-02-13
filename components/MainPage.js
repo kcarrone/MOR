@@ -1,10 +1,13 @@
 import React, { Component } from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 
 const MainPage = () => {
   return (
     <View style={styles.container}>
       <Text> MainPage </Text>
+      <TouchableOpacity>
+        <Text style={{ color: "#1B9CFC" }}>Log Out</Text>
+      </TouchableOpacity>
     </View>
   );
 };

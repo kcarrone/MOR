@@ -3,25 +3,26 @@ import React, { Component } from "react";
 import LoginForm from "./components/LoginForm";
 import MainPage from "./components/MainPage";
 import firebase from "firebase";
+import Loading from "./components/Loading";
 class App extends Component {
   state = {
     loggedIn: null
   };
   componentDidMount() {
     var firebaseConfig = {
-      apiKey: "AIzaSyDm4fVfSC56k_s3h9Jq6PuJdopdJ-Bak5Y",
-      authDomain: "mor-maintain-our-road.firebaseapp.com",
-      databaseURL: "https://mor-maintain-our-road.firebaseio.com",
-      projectId: "mor-maintain-our-road",
-      storageBucket: "mor-maintain-our-road.appspot.com",
-      messagingSenderId: "315287565804",
-      appId: "1:315287565804:web:521bdeffcabee3472abcc9",
-      measurementId: "G-R2Q1FWHT3W"
+      apiKey: "AIzaSyAvHslFrqopTvuW_jScOQXBmfG65Hjf7N8",
+      authDomain: "mor411.firebaseapp.com",
+      databaseURL: "https://mor411.firebaseio.com",
+      projectId: "mor411",
+      storageBucket: "mor411.appspot.com",
+      messagingSenderId: "1020872581336",
+      appId: "1:1020872581336:web:da336330b6a21bbe1f77ad"
     };
     // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
-
+    //firebase.initializeApp(firebaseConfig);
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         this.setState({
@@ -36,10 +37,12 @@ class App extends Component {
   }
   renderContent = () => {
     switch (this.state.loggedIn) {
-      case true:
-        return <LoginForm />;
       case false:
+        return <LoginForm />;
+      case true:
         return <MainPage />;
+      default:
+        return <Loading />;
     }
   };
   render() {
