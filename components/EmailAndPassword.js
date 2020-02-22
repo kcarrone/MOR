@@ -7,6 +7,7 @@ import {
   TouchableOpacity
 } from "react-native";
 import firebase from "firebase";
+import SignUp from "./SignUp"
 
 class EmailAndPassword extends Component {
   state = {
@@ -56,15 +57,7 @@ class EmailAndPassword extends Component {
         <TouchableOpacity>
           <Text style={styles.errorText}>{this.state.error}</Text>
         </TouchableOpacity>
-        <View style={styles.signupTextCont}>
-          <Text style={styles.signupText}>Don't have an account yet? </Text>
-          <Text
-            style={styles.signupButton}
-            //onPress={() => this.props.navigation.navigate("Signup")}
-          >
-            Signup
-          </Text>
-        </View>
+        
       </View>
     );
   }
@@ -90,28 +83,14 @@ const styles = StyleSheet.create({
     fontSize: 15,
     backgroundColor: "red"
   },
-  signupTextCont: {
-    flexGrow: 1,
-    alignItems: "flex-end",
-    justifyContent: "center",
-    marginVertical: 20,
-    flexDirection: "row"
-  },
+  
   errorText: {
     fontSize: 18,
     color: "red",
     alignSelf: "center",
     marginTop: 10
   },
-  signupText: {
-    color: "rgba(225,225,255,0.7)",
-    fontSize: 16
-  },
-  signupButton: {
-    color: "black",
-    fontSize: 16,
-    fontWeight: "500"
-  },
+  
   buttonText: {
     textAlign: "center",
     color: "white",
